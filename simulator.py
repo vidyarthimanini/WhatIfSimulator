@@ -66,7 +66,7 @@ projected = base_score + D + C + S
 projected = float(np.clip(projected, 0, 100))
 
 # ---------------------------
-# Color coding for final score
+# Risk Color Label
 # ---------------------------
 def risk_color(score):
     if score >= 75:
@@ -81,13 +81,13 @@ def risk_color(score):
 # ---------------------------
 st.subheader("📊 Simulation Result")
 
-st.metric("Projected Risk Score", f"{projected:.2f}", delta=projected-base_score)
+st.metric("Projected Risk Score", f"{projected:.2f}", delta=projected - base_score)
 
 st.write(f"### Risk Band: **{risk_color(projected)}**")
 
 st.write("### Impact Breakdown")
 st.write(f"- **DSCR Impact**: `{D}`")
 st.write(f"- **CIBIL Impact**: `{C}`")
-st.write(f"- **Scale Impact** (Turnover + Net Worth): `{S}`")
+st.write(f"- **Scale Impact (Turnover + Net Worth)**: `{S}`")
 
 st.success("Simulation complete. Adjust the sliders above to see results instantly!")
